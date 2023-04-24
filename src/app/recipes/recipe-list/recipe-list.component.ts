@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Recipe } from '../recipies.model';
 
 @Component({
@@ -7,11 +7,12 @@ import { Recipe } from '../recipies.model';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent {
+  @Output() recipeWasSelected = new EventEmitter<Recipe>();
 
-  recipies : Recipe[] = [
-    new Recipe('Pizza', 'This is a test case','https://media.gettyimages.com/id/1305516603/photo/shahi-paneer-or-paneer-kadai.jpg?s=2048x2048&w=gi&k=20&c=49Bggu_EPwzVsFZJ9iyZMmsWFSv0kHWL8hW3dYaGw9I='),
-    
-      new Recipe('Pizza', 'This is a test case', 'https://media.gettyimages.com/id/1305516603/photo/shahi-paneer-or-paneer-kadai.jpg?s=2048x2048&w=gi&k=20&c=49Bggu_EPwzVsFZJ9iyZMmsWFSv0kHWL8hW3dYaGw9I=')
+  recipes: Recipe[] = [
+    new Recipe('Pizza', 'This is a test case', 'https://media.gettyimages.com/id/1305516603/photo/shahi-paneer-or-paneer-kadai.jpg?s=2048x2048&w=gi&k=20&c=49Bggu_EPwzVsFZJ9iyZMmsWFSv0kHWL8hW3dYaGw9I='),
+
+    new Recipe('Pizza', 'This is a test case', 'https://media.gettyimages.com/id/1305516603/photo/shahi-paneer-or-paneer-kadai.jpg?s=2048x2048&w=gi&k=20&c=49Bggu_EPwzVsFZJ9iyZMmsWFSv0kHWL8hW3dYaGw9I=')
   ];
   constructor() {
 
@@ -20,5 +21,9 @@ export class RecipeListComponent {
   ngOnInit() {
 
   }
-
+  onRecipeSelected(recipe: Recipe) {
+    console.log("list")
+    console.log(recipe)
+    this.recipeWasSelected.emit(recipe);
+  }
 }

@@ -1,14 +1,13 @@
 <div class="row">
-    <div class="col-xs-10">
-            <app-shpopping-edit></app-shpopping-edit>
+        <div class="col-xs-10">
+                <app-shpopping-edit (ingredientsAdded)="onIngredientAdded($event)"></app-shpopping-edit>
 
-            <hr>
-            <ul class="list-group">
-                    <a href="#" class="list-group-item" 
-                    style="cursor: pointer;"
-                    *ngFor=" let ingredient of ingredients">
-                    {{ingredient.name}} ({{ingredient.amount}})
-                    </a>
-            </ul>
-    </div>
+                <hr>
+                <ul class="list-group">
+                        <a href="#" class="list-group-item" style="cursor: pointer;"
+                                *ngFor=" let ingredient of ingredients">
+                                {{ingredient.name}} ({{ingredient.amount}})
+                        </a>
+                </ul>
+        </div>
 </div>
